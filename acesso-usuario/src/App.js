@@ -5,22 +5,20 @@ import RestrictedPage from "./components/RestrictedPage";
 function App() {
   const user = "Igor Basquerotto";
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   function Login() {
-    setIsLoggedIn(true);
-  }
-
-  function Logout() {
-    setIsLoggedIn(false);
+    setIsLoggedIn(!isLoggedIn);
   }
 
   return (
     <div className="App">
       <div className="App-header">
-        <RestrictedPage user={user} isLoggedIn={isLoggedIn}></RestrictedPage>
-        <button onClick={Logout}>Logout</button>
-        <button onClick={Login}>Login</button>
+        <RestrictedPage
+          user={user}
+          isLoggedIn={isLoggedIn}
+          Login={Login}
+        ></RestrictedPage>
       </div>
     </div>
   );
